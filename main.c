@@ -1,15 +1,13 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include"main.h"
-#define TestNum_Max 10000000000000 
-int GCD_Form_Wiki(int Num, int Num2){
-	if (Num2) while((Num %= Num2) && (Num2 %= Num));
-	return Num+Num2;
-}
+#define TestNum_Max 3000 
 
 int main(){
 	fprintf(stderr,"短除法程式驗證結果=%d\n",test_gcd_using_factorization());
 	fprintf(stderr,"輾轉相除法程式驗證結果=%d\n",test_gcd_using_euclidean_algorithm());
+	return 0;
+	system("PAUSE");
 }
 
 int gcd_using_factorization(int Num,int Num2){
@@ -33,16 +31,21 @@ int gcd_using_factorization(int Num,int Num2){
 
 int gcd_using_euclidean_algorithm(int Num,int Num2){
 	int GCD=0;
-		while(Num>0 || Num2>0){
-			if(Num>Num2){
-				Num-=Num2;
-				GCD=Num;
-			}else{	
-					Num2-=Num;
-				GCD=Num2;
-			}
-		return GCD;
+	while(Num>0 || Num2>0){
+		if(Num>Num2){
+			Num-=Num2;
+			GCD=Num;
+		}else{	
+				Num2-=Num;
+			GCD=Num2;
+		}
+	return GCD;
+	}
 }
+
+int GCD_Form_Wiki(int Num, int Num2){
+	if (Num2) while((Num %= Num2) && (Num2 %= Num));
+	return Num+Num2;
 }
 
 boolean test_gcd_using_factorization(){
